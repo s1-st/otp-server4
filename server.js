@@ -43,14 +43,30 @@ app.post("/send-otp", async (req, res) => {
 
   try {
     await resend.emails.send({
-      from: "OTP Service <onboarding@resend.dev>",
-      to: email,
-      subject: "Your OTP Code",
-      html: `
-        <h2>Your OTP Code</h2>
-        <h1>${otp}</h1>
-        <p>This code expires in 2 minutes.</p>
-      `
+  from: "OTP Service <onboarding@resend.dev>",
+  to: email,
+  subject: "Welcome — Your verification code",
+  html: `
+    <div style="font-family: Arial, sans-serif;">
+      <h2>Hello 👋</h2>
+
+      <p>Thank you for using our service.</p>
+
+      <p>Your verification code is:</p>
+
+      <h1 style="letter-spacing: 4px;">${otp}</h1>
+
+      <p>This code will expire in 2 minutes.</p>
+
+      <br>
+
+      <p>If you did not request this, you can ignore this email.</p>
+
+      <br>
+
+      <p>— Support Team</p>
+    </div>
+  `  `
     });
 
     res.json({ success: true, message: "OTP sent" });
