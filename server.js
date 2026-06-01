@@ -101,6 +101,9 @@ app.post("/verify-otp", (req, res) => {
   res.json({ success: false, message: "Wrong OTP" });
 });
 
-app.listen(3000, () => {
-  console.log("OTP server running");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log("OTP server running on port " + PORT);
+});
 });
